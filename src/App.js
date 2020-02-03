@@ -1,24 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import MyName from "./MyName";
+import Counter from "./Counter";
+import logo from "./logo.svg";
+import "./App.css";
 
-class App extends Component {
-  render(){
-    const name = 'Hello React!';
+export default class App extends Component {
+  render() {
+    const name = "Hello React!";
     const style = {
-      fontSize: '2rem',
-      padding: '0.5rem'
-    }
+      fontSize: "2rem",
+      padding: "0.5rem"
+    };
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           {/* JSX (Javascript XML) */}
-          <p style={style} className="App-msg">{name}</p>
+          <p style={style} className="App-msg">
+            {name}
+          </p>
+          <MyName name="Junyoung" />
+          <Counter />
         </header>
       </div>
     );
   }
 }
-
-export default App;
