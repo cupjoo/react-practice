@@ -29,6 +29,12 @@ export default class PhoneInfo extends Component {
     });
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return (!this.state.editing && !nextState.editing
+      && nextProps.info === this.props.info) 
+      ? false : true
+  }
+
   // render 호출 후 props, state가 변경 시 호출
   componentDidUpdate(prevProps, prevState) {
     const { info, onUpdate } = this.props;
