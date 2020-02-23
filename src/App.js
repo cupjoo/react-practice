@@ -23,6 +23,18 @@ export default class App extends Component {
       information: information.concat({ id: this.id++, ...data })
     }))
   }
+  handleRemove = (id) => {
+    this.setState(({ information }) => ({
+      information: information.filter(info => info.id !== id)
+    }))
+  }
+  handleUpdate = (id, data) => {
+    this.setState(({ information }) => ({
+      information: information.map(
+        info => id === info.id ? { ...info, ...data } : info
+      )
+    }))
+  }
   render() {
     const { information } = this.state;
     return (
@@ -30,7 +42,11 @@ export default class App extends Component {
         <PhoneForm
           onCreate={this.handleCreate}
         />
-        <PhoneInfoList data={this.state.information}/>
+        <PhoneInfoList
+          data={information}
+          onRemove={this.handleRemove}
+          onUpdate={this.handleUpdate}
+        />
       </div>
     );
   }
